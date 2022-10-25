@@ -8,6 +8,14 @@
       rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <script>
+      window.onload = () => {
+        if (liff.isInClient()) {
+        } else {
+          location.replace('./404.html')
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -64,12 +72,7 @@
           console.log('LIFF Initialization failed ', err);
         });
       }
-      window.onload = () => {
-        if (liff.isInClient()) {
-        } else {
-          location.replace('./404.html')
-        }
-      }
+
       function sendText(text) {
         liff.sendMessages([{
           'type': 'text',
@@ -89,7 +92,7 @@
           const fukkin = $('input[name="fukkin"]').val();
           const haikin = $('input[name="haikin"]').val();
           const sukuwat = $('input[name="sukuwat"]').val();
-          const msg = '2回目以降案件\n${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}';
+          const msg = `2回目以降案件\n${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
           sendText(msg);
           return false;
         });
